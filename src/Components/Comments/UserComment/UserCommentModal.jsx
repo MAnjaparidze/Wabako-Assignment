@@ -1,5 +1,4 @@
 import React from 'react'
-import reportWebVitals from './../../../reportWebVitals';
 
 export default function UserCommentModal() {
     return (
