@@ -1,15 +1,14 @@
 import React from 'react'
 import SearchCard from './../../Search/SearchCard';
-import UserCommentModal from './../../Comments/UserComment/UserCommentModal';
 import CommentsSections from './../../Comments/CommentsSections';
 
-export default function PageBodyRight() {
+export default function PageBodyRight(props) {
+
     return (
         <div className='col-md-4'>
-        <div className='my-4'>
+        <div>
           <SearchCard />
-          <UserCommentModal />
-          <CommentsSections />
+          {props.comments.length > 1 && <CommentsSections comments={props.comments} />}
         </div>
       </div>
     )

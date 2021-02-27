@@ -2,7 +2,7 @@ import React from 'react'
 
 export default function SearchCard() {
     return (
-        <div className="card my-4">
+        <div className="card">
             <h5 className="card-header">Search</h5>
             <div className="card-body">
                 <div className="input-group">

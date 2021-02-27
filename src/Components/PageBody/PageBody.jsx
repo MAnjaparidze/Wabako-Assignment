@@ -9,7 +9,7 @@ export default function PageBody(props) {
             <h3 className="my-4">Place for exchanging your visions</h3>
             <div className="row">
                 <PageBodyLeft posts={props.posts} handleSeeCommentClick={props.handleSeeCommentClick} />
-                <PageBodyRight />
+                <PageBodyRight comments={props.comments} />
             </div>
         </div>
     )
