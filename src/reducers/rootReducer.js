@@ -16,6 +16,16 @@ const rootReducer = (state = initState, action) => {
                 ...state,
                 comments: action.comments
             }
+        case "ADD_COMMENT":   // For some reason JSONPlaceHolder does not return [COMMENTS] array with newly added comment so I am changing it in local state
+            return {
+                ...state,
+                comments: [...state.comments, action.comment]
+            }
+        case "ADD_USER":
+            return {
+                ...state,
+                user: action.user
+            }
         default: return state;
     }
 }

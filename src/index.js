@@ -1,7 +1,7 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 import './index.css';
-import App from './App';
+import AppContainer from './containers/AppContainer/AppContainer';
 
 import { Provider } from 'react-redux';
 import { createStore, applyMiddleware } from 'redux';
@@ -12,7 +12,7 @@ const store = createStore(rootReducer, applyMiddleware(thunk));
 
 ReactDOM.render(
   <Provider store={store}>
-    <App />
+    <AppContainer />
   </Provider>,
   document.getElementById('root')
 );

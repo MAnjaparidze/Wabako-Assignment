@@ -1,9 +1,9 @@
 import React, { Component } from 'react';
-import PageBody from './../Components/PageBody/PageBody';
+import PageBody from '../../Components/PageBody/PageBody';
 
 import { connect } from 'react-redux';
 
-import * as actionTypes from '../actions/rootActions';
+import * as actionTypes from '../../actions/rootActions';
 
 class PageBodyContainer extends Component {
     componentDidMount() {
@@ -19,7 +19,9 @@ class PageBodyContainer extends Component {
             <PageBody
                 posts={this.props.posts}
                 comments={this.props.comments}
+                addComment={this.props.addComment}
                 handleSeeCommentClick={this.handleSeeCommentClick}
+                user={this.props.user}
             />
         )
     }
