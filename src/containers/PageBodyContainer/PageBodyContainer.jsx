@@ -22,6 +22,7 @@ class PageBodyContainer extends Component {
                 addComment={this.props.addComment}
                 handleSeeCommentClick={this.handleSeeCommentClick}
                 user={this.props.user}
+                filterPosts={this.props.filterPosts}
             />
         )
     }

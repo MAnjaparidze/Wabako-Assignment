@@ -15,6 +15,25 @@ export const setPosts = (data) => {
     }
 }
 
+export const filterPosts = (input) => {
+    if (input.length === 0) {
+        return getPosts();
+    } else {
+        return (dispatch) => {
+            return axios.get("https://jsonplaceholder.typicode.com/posts").then(async (res) => {
+                let usersData = await getUsers();
+                let usersIds = usersData.filter(user => user.username.includes(input)).map(user => user.id);
+                let filteredData = res.data.filter(item => {
+                    if(usersIds.includes(item.userId)) {
+                        return item;
+                    }
+                });
+                return dispatch(setPosts(filteredData));
+            })
+        }
+    }
+}
+
 // Comments Actions
 export const getComments = (postId) => {
     return (dispatch) => {
@@ -27,6 +46,7 @@ export const getComments = (postId) => {
 export const addComment = (commentObject) => {
     return (dispatch) => {
         return axios.post("https://jsonplaceholder.typicode.com/comments", commentObject).then((res) => {
+            let data = res.data;
             return dispatch(setAddComment(res.data))
         })
     }
@@ -49,7 +69,7 @@ export const setAddComment = (data) => {
 // User Actions
 
 export const getPostAuthor = async (userId) => {
-    return await axios.get(`https://jsonplaceholder.typicode.com/users/${userId}`).then((res) => {
+    return axios.get(`https://jsonplaceholder.typicode.com/users/${userId}`).then((res) => {
         return res.data;
     })
 }
@@ -60,6 +80,12 @@ export const getUser = () => {
             return dispatch(setUser(res.data[0]))  // Right now we don't have proper authentication so I am hardcoding and "SIMULATING" the Log In process
         })
     }
+}
+
+export const getUsers = () => {
+    return axios.get('https://jsonplaceholder.typicode.com/users').then((res) => {
+        return res.data;
+    })
 }
 
 export const setUser = (data) => {

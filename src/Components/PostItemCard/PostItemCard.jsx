@@ -13,15 +13,20 @@ export default function PostItemCard(props) {
         setAuthor(data);
     }
 
+    const handleClick = () => {
+        props.handleSeeCommentClick(props.data.id)
+        props.setActivePost(props.data)
+    }
+
     return (
-        <div className="card mb-4">
-            <div className="card-body">
+        <div className={`card mb-4 ${props.activePost && (props.activePost.id === props.data.id && "card-active")}`}>
+            <div className="card-body" >
                 <h2 className="card-title">{props.data.title.charAt(0).toUpperCase() + props.data.title.slice(1)}</h2> {/* Just cherry on top to make first letter of the header uppercase */}
                 <p className="card-text">{props.data.body}</p>
-                <button onClick={() => props.handleSeeCommentClick(props.data.id)} className="btn btn-primary">See Comments</button>
+                <button onClick={() => handleClick()} className="btn btn-primary">See Comments</button>
             </div>
             <div className="card-footer text-muted">
-                <span>{`Posted on January ${Math.round(Math.random() * Math.floor(31))} by ${author && author.username}`}</span>
+                <span>{`Posted by ${author && author.username}`}</span>
             </div>
         </div>
     )

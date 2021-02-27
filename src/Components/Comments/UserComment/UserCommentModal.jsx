@@ -24,7 +24,7 @@ export default function UserCommentModal(props) {
     commentObj.postId = props.parentPost;
     commentObj.id = props.comments[props.comments.length - 1].id + 1; // Dynamically "try" to assign id to the comment object because JSONPlaceHolder does not do this
     commentObj.email = props.user.email;
-
+    console.log(commentObj);
     props.addComment(commentObj);
   }
 
