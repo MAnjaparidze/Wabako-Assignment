@@ -22,9 +22,10 @@ export default function UserCommentModal(props) {
     let commentObj = { ...userComment };
 
     commentObj.postId = props.parentPost;
-    commentObj.id = props.comments[props.comments.length - 1].id + 1; // Dynamically "try" to assign id to the comment object because JSONPlaceHolder does not do this
+    // commentObj.id = 500 + props.comments.length; // As I found out JSONPlaceHolder assigns the id to newly added comment but because it is temporary all the id's are 501 which then creates a problem with KEY in map function
     commentObj.email = props.user.email;
-    console.log(commentObj);
+    console.log("[PROPS COMMENTS] ", props.comments)
+    console.log("[LAST COMMENT ID] ", props.comments[0].id);
     props.addComment(commentObj);
   }
 

@@ -46,7 +46,6 @@ export const getComments = (postId) => {
 export const addComment = (commentObject) => {
     return (dispatch) => {
         return axios.post("https://jsonplaceholder.typicode.com/comments", commentObject).then((res) => {
-            let data = res.data;
             return dispatch(setAddComment(res.data))
         })
     }
